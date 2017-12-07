@@ -1,0 +1,51 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # Entry image for the build
+      - image: circleci/python:3.6.1
+
+      - image: redis
+
+    working_directory: ~/learning_map_api
+
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: |
+            sudo pip install -r requirements.txt
+            sudo pip install tox
+
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            tox
+  deploy:
+    machine:
+      image: circleci/classic:latest
+    working_directory: ~/learning_map_api
+    steps:
+      - checkout
+      - run:
+          name: Dump Google Cloud Credentials to file
+          command: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
+      - run:
+          name: Deploy to GCP
+          command: . ./deploy_staging.sh
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
