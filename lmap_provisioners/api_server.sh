@@ -43,7 +43,8 @@ fi
 clone_repo(){
 git clone git@github.com:EugeneBad/learning_map_api.git
 cd learning_map_api
-git checkout $(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/build_commit -H "Metadata-Flavor: Google")
+BUILD_COMMIT=$(curl http://metadata.google.internal/computeMetadata/v1/project/attributes/build_commit -H "Metadata-Flavor: Google")
+git checkout ${BUILD_COMMIT}
 }
 
 install_project_deps(){
