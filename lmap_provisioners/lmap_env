@@ -1,0 +1,5 @@
+SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@35.188.143.254:5432/postgres
+REDIS_URL=redis://35.189.245.115
+FLASK_CONFIG=development
+FLASK_APP=main.py
+DB_TYPE=postgresql
