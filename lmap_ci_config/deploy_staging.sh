@@ -24,8 +24,7 @@ gcloud --quiet config set compute/zone us-east1-b
 
 deploy_change(){
 gcloud compute instances add-metadata api-server --metadata build_commit=${CIRCLE_SHA1}
-gcloud compute instances stop api-server
-gcloud compute instances start api-server
+gcloud beta compute instance-groups managed rolling-action replace lmap-api-instance-group --max-surge=3 --max-unavailable=0 --min-ready=200 --region=europe-west3
 }
 
 main(){
