@@ -1,7 +1,3 @@
-# Python CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-python/ for more details
-#
 version: 2
 jobs:
   build:
@@ -21,14 +17,15 @@ jobs:
             sudo pip install -r requirements.txt
             sudo pip install tox
 
+
       # run tests!
       - run:
           name: run tests
           command: |
             tox
   deploy:
-    machine:
-      image: circleci/classic:latest
+    docker:
+      image: ubuntu:xenial
     working_directory: ~/learning_map_api
     steps:
       - checkout
