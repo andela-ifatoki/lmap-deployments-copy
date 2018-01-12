@@ -1,26 +1,24 @@
 {
-	"builders": [
-          {
-           "type": "googlecompute",
-           "account_file": "../gcp-account.json",
-           "project_id": "andela-learning",
-           "source_image": "ubuntu-1604-xenial-v20180109",
-           "zone": "europe-west2-b",
-           "ssh_username": "packer",
-	   "image_name": "lmap-postgresdb-base-image"
-          }
-	],
-
-	"provisioners": [
-	  {
-	   "type": "file",
- 	   "source": "../scripts/pg/pg_hba.conf",
-	   "destination": "/tmp/pg_hba.conf"
-	  },
-	  {
-	   "type": "shell",
-	   "script": "../scripts/pg/postgresdb-provisioner.sh"
-	  }
-     	]
-
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "../gcp-account.json",
+      "project_id": "andela-learning",
+      "source_image": "ubuntu-1604-xenial-v20180109",
+      "zone": "europe-west2-b",
+      "ssh_username": "packer",
+      "image_name": "lmap-postgresdb-base-image"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "../scripts/pg/pg_hba.conf",
+      "destination": "/tmp/pg_hba.conf"
+    },
+    {
+      "type": "shell",
+      "script": "../scripts/pg/postgresdb-provisioner.sh"
+    }
+  ]
 }
