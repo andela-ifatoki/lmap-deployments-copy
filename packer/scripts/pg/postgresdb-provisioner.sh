@@ -30,6 +30,6 @@ main(){
   create_user
   install_adminpack
   allow_connection
-  restart_pg
+  start_pg_onboot
 }
 main
