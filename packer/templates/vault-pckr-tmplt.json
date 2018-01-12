@@ -13,12 +13,12 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "../scripts/vault/",
+      "source": "../scripts/vault/lmap-vault-policy.hcl",
       "destination": "/tmp/lmap-vault-policy.hcl"
     },
     {
       "type": "file",
-      "source": "../scripts/vault/",
+      "source": "../scripts/vault/vault_config_file.hcl",
       "destination": "/tmp/vault_config_file.hcl"
     },
     {
