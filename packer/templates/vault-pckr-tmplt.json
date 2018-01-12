@@ -12,8 +12,18 @@
   ],
   "provisioners": [
     {
+      "type": "file",
+      "source": "../scripts/vault/",
+      "destination": "/tmp/lmap-vault-policy.hcl"
+    },
+    {
+      "type": "file",
+      "source": "../scripts/vault/",
+      "destination": "/tmp/vault_config_file.hcl"
+    },
+    {
       "type": "shell",
-      "script": "../scripts/vault-provisioner.sh"
+      "script": "../scripts/vault/vault-provisioner.sh"
     }
   ]
 }
