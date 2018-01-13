@@ -14,6 +14,11 @@
     {
       "type": "shell",
       "script": "../scripts/apiserver-provisioner.sh"
+    },
+    {
+      "type": "file",
+      "source": "../scripts/apiserver/apiserver-startup.sh",
+      "destination": "/home/packer/apiserver-startup.sh"
     }
   ]
 }
