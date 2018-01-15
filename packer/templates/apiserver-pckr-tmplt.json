@@ -13,7 +13,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "../scripts/apiserver-provisioner.sh"
+      "script": "../scripts/apiserver/apiserver-provisioner.sh"
     },
     {
       "type": "file",
@@ -22,3 +22,4 @@
     }
   ]
 }
+apiserver-startup.sh
