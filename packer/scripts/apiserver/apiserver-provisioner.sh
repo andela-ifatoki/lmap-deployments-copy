@@ -22,15 +22,9 @@ sudo pip install supervisor
 sudo pip install virtualenvwrapper
 }
 
-add_github_to_known_hosts(){
-ssh-keyscan github.com >> $HOME/.ssh/known_hosts
-}
-
-
 main(){
   setup_vault
   install_env_deps
-  add_github_to_known_hosts
 }
 
 main

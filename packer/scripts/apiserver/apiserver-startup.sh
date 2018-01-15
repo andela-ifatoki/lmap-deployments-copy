@@ -21,6 +21,10 @@ source /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv -p python3.6 lmap
 }
 
+add_github_to_known_hosts(){
+ssh-keyscan github.com >> $HOME/.ssh/known_hosts
+}
+
 create_repo_key(){
 vault read -format="json" lmap/keys | jq -r .data.lmap_repo_private_key > $HOME/.ssh/id_rsa
 
@@ -61,6 +65,7 @@ main(){
 remove_artifacts
 setup_vault
 create_venv
+add_github_to_known_hosts
 create_repo_key
 clone_repo
 install_project_deps
