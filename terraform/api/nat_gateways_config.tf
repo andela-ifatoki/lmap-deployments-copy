@@ -2,12 +2,12 @@
 resource "google_compute_instance" "nat_api_gateway" {
   name         = "nat-api-instance"
   description  = "A NAT instance to help provide internet access to the API instances in the private subnet."
-  machine_type = "n1-standard-1"
+  machine_type = "${var.machine_type}"
   zone         = "europe-west3-a"
-  metadata_startup_script = "sudo sysctl -w net.ipv4.ip_forward=1; sudo iptables -t nat -A POSTROUTING -o ens4 -j MASQUERADE"
+  metadata_startup_script = "${lookup(var.startup_scripts, "nat")}"
   boot_disk {
     initialize_params {
-      image = "ubuntu-1604-xenial-v20180109"
+      image = "${var.nat_image}"
     }
   }
   network_interface {

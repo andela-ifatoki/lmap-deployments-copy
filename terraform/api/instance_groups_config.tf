@@ -3,7 +3,7 @@
 resource "google_compute_region_instance_group_manager" "lmap_api_instance_group_manager" {
   name               = "lmap-api-instance-group-manager"
   base_instance_name = "lmap-api-instance-group"
-  region = "europe-west3"
+  region = "${var.region}"
   instance_template  = "${google_compute_instance_template.lmap_api_instance_template.self_link}"
   named_port {
     name = "http"
@@ -17,7 +17,7 @@ resource "google_compute_region_instance_group_manager" "lmap_api_instance_group
 
 resource "google_compute_region_autoscaler" "lmap_api_autoscaler" {
   name   = "lmap-api-autoscaler"
-  region = "europe-west3"
+  region = "${var.region}"
   target = "${google_compute_region_instance_group_manager.lmap_api_instance_group_manager.self_link}"
 
   autoscaling_policy = {

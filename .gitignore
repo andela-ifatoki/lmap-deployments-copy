@@ -2,3 +2,4 @@
 *.tfstate*
 vault files
 .terraform
+ssl_cert
