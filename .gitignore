@@ -1,4 +1,4 @@
 *json
 *.tfstate*
-private_key
-public_key
+vault files
+.terraform

@@ -1,4 +1,5 @@
 // Setup project firewalls
+
 resource "google_compute_firewall" "firewall_api_allow_icmp" {
   name          = "allow-icmp-api"
   description   = "Allow ICMP access across the firewall into the API Virtual Private Cloud."

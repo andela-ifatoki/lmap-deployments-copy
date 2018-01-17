@@ -1,4 +1,5 @@
 // Configure external IP addresses
+
 resource "google_compute_address" "ip_ep_api_nat" {
   name = "ip-api-nat-gateway"
   region = "europe-west3"
