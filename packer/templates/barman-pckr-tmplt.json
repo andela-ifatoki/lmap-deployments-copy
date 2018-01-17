@@ -1,0 +1,25 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "../gcp-account.json",
+      "project_id": "andela-learning",
+      "source_image": "ubuntu-1604-xenial-v20180109",
+      "zone": "europe-west2-b",
+      "ssh_username": "packer",
+      "image_name": "lmap-barman-base-image"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "../scripts/barman/barman.conf",
+      "destination": "/tmp/barman.conf"
+    },
+    {
+      "type": "shell",
+      "script": "../scripts/barman/barman-provisioner.sh"
+    }
+  ]
+}
