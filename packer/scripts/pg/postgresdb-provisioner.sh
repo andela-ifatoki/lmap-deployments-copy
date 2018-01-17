@@ -18,7 +18,7 @@ pg_hba_file="/etc/postgresql/9.5/main/pg_hba.conf"
 sudo mv /tmp/pg_hba.conf ${pg_hba_file}
 
 postgres_file="/etc/postgresql/9.5/main/postgresql.conf"
-sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" ${postgres_file}
+sudo mv /tmp/postgresql.conf ${postgres_file}
 }
 
 start_pg_onboot(){
