@@ -17,6 +17,11 @@
       "destination": "/tmp/pg_hba.conf"
     },
     {
+      "type": "file",
+      "source": "../scripts/pg/postgresql.conf",
+      "destination": "/tmp/postgresql.conf"
+    },
+    {
       "type": "shell",
       "script": "../scripts/pg/postgresdb-provisioner.sh"
     }
