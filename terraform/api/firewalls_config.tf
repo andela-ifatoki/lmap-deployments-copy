@@ -42,7 +42,7 @@ resource "google_compute_firewall" "firewall_api_allow_private-ssh" {
     protocol    = "tcp"
     ports       = ["22"]
   }
-  source_ranges = ["${google_compute_subnetwork.subnet_public_api.ip_cidr_range}"]
+  source_tags = ["public", "private"]
   target_tags   = ["private"]
 }
 
