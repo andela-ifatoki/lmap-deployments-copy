@@ -19,6 +19,11 @@
     },
     {
       "type": "file",
+      "source": "../scripts/barman/barman.sh",
+      "destination": "/tmp/barman.sh"
+    },
+    {
+      "type": "file",
       "source": "../scripts/barman/barman.conf",
       "destination": "/tmp/barman.conf"
     },

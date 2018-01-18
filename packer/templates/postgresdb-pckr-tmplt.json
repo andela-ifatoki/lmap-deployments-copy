@@ -18,6 +18,11 @@
     },
     {
       "type": "file",
+      "source": "../scripts/pg/postgresql.sh",
+      "destination": "/tmp/postgresql.sh"
+    },
+    {
+      "type": "file",
       "source": "../scripts/pg/pg_hba.conf",
       "destination": "/tmp/pg_hba.conf"
     },

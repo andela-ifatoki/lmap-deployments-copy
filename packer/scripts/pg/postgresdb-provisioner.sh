@@ -21,8 +21,10 @@ postgres_file="/etc/postgresql/9.5/main/postgresql.conf"
 sudo mv /tmp/postgresql.conf ${postgres_file}
 sudo chown postgres ${postgres_file}
 
-#We may as well copy the start-up script here
+#We may as well copy the other scripts from here!
 sudo mv /tmp/postgres-startup.sh /home/packer/postgres-startup.sh
+sudo mv /tmp/postgresql.sh /home/packer/postgresql.sh
+chmod 755 /home/packer/postgresql.sh
 }
 
 start_pg_onboot(){

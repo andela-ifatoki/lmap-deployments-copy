@@ -24,5 +24,6 @@ main(){
   create_ssh_keys
   set_metadata
   fetch_barman_public_key
+  sudo systemctl restart postgresql
 }
 main

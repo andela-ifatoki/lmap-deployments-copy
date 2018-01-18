@@ -1,2 +1,2 @@
 45 23 * * * /usr/bin/barman backup main-lmap-db
-* * * * * /usr/bin/barman cron
+23 * * * * /usr/bin/barman cron
