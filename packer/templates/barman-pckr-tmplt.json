@@ -14,8 +14,18 @@
   "provisioners": [
     {
       "type": "file",
+      "source": "../scripts/barman/db-backup-cronjob",
+      "destination": "/tmp/db-backup-cronjob"
+    },
+    {
+      "type": "file",
       "source": "../scripts/barman/barman.conf",
       "destination": "/tmp/barman.conf"
+    },
+    {
+      "type": "file",
+      "source": "../scripts/barman/barman-startup.sh",
+      "destination": "/tmp/barman-startup.sh"
     },
     {
       "type": "shell",

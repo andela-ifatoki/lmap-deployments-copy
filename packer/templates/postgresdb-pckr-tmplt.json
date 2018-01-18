@@ -13,6 +13,11 @@
   "provisioners": [
     {
       "type": "file",
+      "source": "../scripts/pg/postgres-startup.sh",
+      "destination": "/tmp/postgres-startup.sh"
+    },
+    {
+      "type": "file",
       "source": "../scripts/pg/pg_hba.conf",
       "destination": "/tmp/pg_hba.conf"
     },
