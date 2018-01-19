@@ -85,7 +85,7 @@ resource "google_compute_instance" "lmap_postgresql" {
     scopes = ["cloud-platform"]
   }
   provisioner "local-exec" {
-    command = "sleep 30; gcloud compute ssh packer@lmap-postgresql-server --zone=\"europe-west3-a\" --command=\"sudo ~/postgresql.sh ${google_compute_address.ex_ip_st_backup_db.address}\""
+    command = "sleep 30; gcloud compute ssh packer@lmap-postgresql-server --project=${var.project} --zone=\"europe-west3-a\" --command=\"sudo ~/postgresql.sh ${google_compute_address.ex_ip_st_backup_db.address}\""
     on_failure = "continue"
   }
 }
@@ -114,7 +114,7 @@ resource "google_compute_instance" "lmap_dbbarman" {
     scopes = ["cloud-platform"]
   }
   provisioner "local-exec" {
-    command = "sleep 30; gcloud compute ssh packer@lmap-dbbarman-server --zone=\"europe-west3-a\" --command=\"sudo ~/barman.sh ${google_compute_address.ex_ip_st_postgresql.address}\""
+    command = "sleep 30; gcloud compute ssh packer@lmap-dbbarman-server --project=${var.project} --zone=\"europe-west3-a\" --command=\"sudo ~/barman.sh ${google_compute_address.ex_ip_st_postgresql.address}\""
     on_failure = "continue"
   }
 }
