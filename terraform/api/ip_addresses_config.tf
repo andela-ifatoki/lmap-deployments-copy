@@ -36,3 +36,14 @@ resource "google_compute_address" "ip_st_api_backup_db" {
   subnetwork = "${google_compute_subnetwork.subnet_private_api.self_link}"
   address = "${lookup(var.static_ips, "backup_db")}"
 }
+
+// Configure External IP Addresses
+resource "google_compute_address" "ex_ip_st_backup_db" {
+  name = "backup-db-external-ip"
+  region = "${var.region}"
+}
+
+resource "google_compute_address" "ex_ip_st_postgresql" {
+  name = "postgresql-external-ip"
+  region = "${var.region}"
+}

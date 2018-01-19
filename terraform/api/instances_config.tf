@@ -75,10 +75,18 @@ resource "google_compute_instance" "lmap_postgresql" {
   network_interface {
     subnetwork  = "${google_compute_subnetwork.subnet_private_api.self_link}"
     address = "${google_compute_address.ip_st_api_postgresql.address}"
+    access_config {
+      // Ephemeral IP
+      nat_ip = "${google_compute_address.ex_ip_st_postgresql.address}"
+    }
   }
-  tags = ["postgresql-server", "private"]
+  tags = ["postgresql-server", "public"]
   service_account {
     scopes = ["cloud-platform"]
+  }
+  provisioner "local-exec" {
+    command = "sleep 30; gcloud compute ssh packer@lmap-postgresql-server --zone=\"europe-west3-a\" --command=\"sudo ~/postgresql.sh ${google_compute_address.ex_ip_st_backup_db.address}\""
+    on_failure = "continue"
   }
 }
 
@@ -96,9 +104,17 @@ resource "google_compute_instance" "lmap_dbbarman" {
   network_interface {
     subnetwork  = "${google_compute_subnetwork.subnet_private_api.self_link}"
     address = "${google_compute_address.ip_st_api_backup_db.address}"
+    access_config {
+      // Ephemeral IP
+      nat_ip = "${google_compute_address.ex_ip_st_backup_db.address}"
+    }
   }
-  tags = ["private"]
+  tags = ["public"]
   service_account {
     scopes = ["cloud-platform"]
+  }
+  provisioner "local-exec" {
+    command = "sleep 30; gcloud compute ssh packer@lmap-dbbarman-server --zone=\"europe-west3-a\" --command=\"sudo ~/barman.sh ${google_compute_address.ex_ip_st_postgresql.address}\""
+    on_failure = "continue"
   }
 }

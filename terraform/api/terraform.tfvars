@@ -1,6 +1,6 @@
 project = "andela-learning"
 region = "europe-west3"
-vault_auth_token = "4dae4679-7534-0849-d329-9f0228bf798b"
+vault_auth_token = "02112521-2468-0610-1c1f-76d89ab8668b"
 startup_scripts = {
   nat = "sudo sysctl -w net.ipv4.ip_forward=1; sudo iptables -t nat -A POSTROUTING -o ens4 -j MASQUERADE"
   postgresql = "sudo su - postgres -c '. /home/packer/postgres-startup.sh'"
