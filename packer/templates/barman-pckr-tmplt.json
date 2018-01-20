@@ -35,6 +35,10 @@
     {
       "type": "shell",
       "script": "../scripts/barman/barman-provisioner.sh"
+    },
+    {
+      "type": "shell",
+      "inline": ["sudo su - barman -c 'echo 10.0.0.6:5432:*:barmanstreamer:{{env `DB_PASSWORD`}} > ~/.pgpass'"]
     }
   ]
 }

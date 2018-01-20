@@ -16,7 +16,6 @@ copy_config_files(){
   sudo mv /tmp/db-backup-cronjob /home/packer/db-backup-cronjob
   sudo mv /tmp/barman-startup.sh /home/packer/barman-startup.sh
   sudo mv /tmp/barman.sh /home/packer/barman.sh
-  chmod 755 /home/packer/barman.sh
 }
 
 main(){
