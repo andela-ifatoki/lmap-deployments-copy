@@ -25,7 +25,6 @@ sudo chown postgres ${postgres_file}
 
 #We may as well copy the other scripts from here!
 sudo mv /tmp/postgres-startup.sh /home/packer/postgres-startup.sh
-sudo mv /tmp/postgresql.sh /home/packer/postgresql.sh
 }
 
 start_pg_onboot(){
