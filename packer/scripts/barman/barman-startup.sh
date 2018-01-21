@@ -21,8 +21,8 @@ fetch_main_db_keys(){
   done
 }
 run_cronjob(){
+  sleep 300
   barman receive-wal --create-slot main-lmap-db
-  barman switch-wal --force --archive main-lmap-db
   crontab -u barman /home/packer/db-backup-cronjob
 }
 

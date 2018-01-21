@@ -1,4 +1,7 @@
 {
+  "variables": {
+    "streamer_password": "{{env `STREAMER_PASSWORD`}}"
+  },
   "builders": [
     {
       "type": "googlecompute",
@@ -10,35 +13,15 @@
       "image_name": "lmap-barman-base-image"
     }
   ],
-
   "provisioners": [
     {
       "type": "file",
-      "source": "../scripts/barman/db-backup-cronjob",
-      "destination": "/tmp/db-backup-cronjob"
-    },
-    {
-      "type": "file",
-      "source": "../scripts/barman/barman.sh",
-      "destination": "/tmp/barman.sh"
-    },
-    {
-      "type": "file",
-      "source": "../scripts/barman/barman.conf",
-      "destination": "/tmp/barman.conf"
-    },
-    {
-      "type": "file",
-      "source": "../scripts/barman/barman-startup.sh",
-      "destination": "/tmp/barman-startup.sh"
+      "source": "../scripts/barman/",
+      "destination": "/tmp"
     },
     {
       "type": "shell",
-      "script": "../scripts/barman/barman-provisioner.sh"
-    },
-    {
-      "type": "shell",
-      "inline": ["sudo su - barman -c 'echo 10.0.0.6:5432:*:barmanstreamer:{{env `DB_PASSWORD`}} > ~/.pgpass'"]
+      "inline": ["/bin/bash /tmp/barman-provisioner.sh {{ user `streamer_password` }}"]
     }
   ]
 }

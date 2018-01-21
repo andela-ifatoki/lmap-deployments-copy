@@ -1,2 +1,2 @@
-45 23 * * * /usr/bin/barman backup main-lmap-db
+45 23 * * * /usr/bin/barman switch-wal --force --archive main-lmap-db; /usr/bin/barman backup main-lmap-db
 23 * * * * /usr/bin/barman cron

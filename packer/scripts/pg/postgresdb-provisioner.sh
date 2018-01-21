@@ -6,8 +6,8 @@ sudo apt-get update; sudo apt-get -y install postgresql postgresql-client postgr
 }
 
 create_user(){
-sudo -u postgres psql postgres -c "alter user postgres with encrypted password 'postgres'"
-sudo -u postgres psql postgres -c "ALTER USER barmanstreamer WITH REPLICATION SUPERUSER"
+sudo -u postgres psql postgres -c "alter user postgres with encrypted password '$1'"
+sudo -u postgres psql postgres -c "CREATE ROLE barmanstreamer WITH REPLICATION SUPERUSER PASSWORD '$2' LOGIN"
 }
 
 install_adminpack(){
@@ -34,9 +34,9 @@ sudo systemctl enable postgresql
 
 main(){
   install_pg
-  create_user
+  create_user $1 $2
   install_adminpack
   allow_connection
   start_pg_onboot
 }
-main
+main $1 $2

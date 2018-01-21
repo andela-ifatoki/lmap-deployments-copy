@@ -1,4 +1,8 @@
 {
+  "variables": {
+    "streamer_password": "{{env `STREAMER_PASSWORD`}}",
+    "db_password": "{{env `DB_PASSWORD`}}"
+  },
   "builders": [
     {
       "type": "googlecompute",
@@ -13,27 +17,14 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "../scripts/pg/postgres-startup.sh",
-      "destination": "/tmp/postgres-startup.sh"
-    },
-    {
-      "type": "file",
-      "source": "../scripts/pg/postgresql.sh",
-      "destination": "/tmp/postgresql.sh"
-    },
-    {
-      "type": "file",
-      "source": "../scripts/pg/pg_hba.conf",
-      "destination": "/tmp/pg_hba.conf"
-    },
-    {
-      "type": "file",
-      "source": "../scripts/pg/postgresql.conf",
-      "destination": "/tmp/postgresql.conf"
+      "source": "../scripts/pg/",
+      "destination": "/tmp"
     },
     {
       "type": "shell",
-      "script": "../scripts/pg/postgresdb-provisioner.sh"
+      "inline": [
+        "/bin/bash /tmp/postgresdb-provisioner.sh {{ user `db_password` }} {{ user `streamer_password` }}"
+      ]
     }
   ]
 }
