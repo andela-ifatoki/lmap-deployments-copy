@@ -101,4 +101,5 @@ resource "google_compute_instance" "lmap_dbbarman" {
   service_account {
     scopes = ["cloud-platform"]
   }
+  depends_on = ["google_compute_instance.lmap_postgresql"]
 }

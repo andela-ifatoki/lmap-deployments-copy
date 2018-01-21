@@ -13,6 +13,7 @@ resource "google_compute_region_instance_group_manager" "lmap_api_instance_group
     health_check      = ""
     initial_delay_sec = 300
   }
+  depends_on = ["google_compute_instance.lmap_postgresql", "google_compute_instance.lmap_redis"]
 }
 
 resource "google_compute_region_autoscaler" "lmap_api_autoscaler" {
