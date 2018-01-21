@@ -23,7 +23,7 @@ resource "google_compute_instance" "lmap_vault" {
   name         = "lmap-vault-server"
   description  = "A vault instance to help with secrets management."
   machine_type = "${var.machine_type}"
-  zone         = "europe-west3-a"
+  zone         = "${var.zone}"
   metadata_startup_script = "${lookup(var.startup_scripts, "vault")}"
   boot_disk {
     initialize_params {
@@ -44,7 +44,7 @@ resource "google_compute_instance" "lmap_redis" {
   name         = "lmap-redis-server"
   description  = "A redis server."
   machine_type = "${var.machine_type}"
-  zone         = "europe-west3-a"
+  zone         = "${var.zone}"
   metadata_startup_script = "${lookup(var.startup_scripts, "redis")}"
   boot_disk {
     initialize_params {
@@ -65,7 +65,7 @@ resource "google_compute_instance" "lmap_postgresql" {
   name         = "lmap-postgresql-server"
   description  = "A postgresql server."
   machine_type = "${var.machine_type}"
-  zone         = "europe-west3-a"
+  zone         = "${var.zone}"
   metadata_startup_script = "${lookup(var.startup_scripts, "postgresql")}"
   boot_disk {
     initialize_params {
@@ -85,7 +85,7 @@ resource "google_compute_instance" "lmap_postgresql" {
     scopes = ["cloud-platform"]
   }
   provisioner "local-exec" {
-    command = "sleep 30; gcloud compute ssh packer@lmap-postgresql-server --project=${var.project} --zone=\"europe-west3-a\" --command=\"sudo ~/postgresql.sh ${google_compute_address.ex_ip_st_backup_db.address}\""
+    command = "sleep 30; gcloud compute ssh packer@lmap-postgresql-server --project=${var.project} --zone=${var.zone} --command=\"sudo ~/postgresql.sh ${google_compute_address.ex_ip_st_backup_db.address}\""
     on_failure = "continue"
   }
 }
@@ -94,7 +94,7 @@ resource "google_compute_instance" "lmap_dbbarman" {
   name         = "lmap-dbbarman-server"
   description  = "DBBarman."
   machine_type = "${var.machine_type}"
-  zone         = "europe-west3-a"
+  zone         = "${var.zone}"
   metadata_startup_script = "${lookup(var.startup_scripts, "backup_db")}"
   boot_disk {
     initialize_params {
@@ -114,7 +114,7 @@ resource "google_compute_instance" "lmap_dbbarman" {
     scopes = ["cloud-platform"]
   }
   provisioner "local-exec" {
-    command = "sleep 30; gcloud compute ssh packer@lmap-dbbarman-server --project=${var.project} --zone=\"europe-west3-a\" --command=\"sudo ~/barman.sh ${google_compute_address.ex_ip_st_postgresql.address}\""
+    command = "sleep 30; gcloud compute ssh packer@lmap-dbbarman-server --project=${var.project} --zone=${var.zone} --command=\"sudo ~/barman.sh ${google_compute_address.ex_ip_st_postgresql.address}\""
     on_failure = "continue"
   }
 }

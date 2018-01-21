@@ -3,7 +3,7 @@ resource "google_compute_instance" "nat_api_gateway" {
   name         = "nat-api-instance"
   description  = "A NAT instance to help provide internet access to the API instances in the private subnet."
   machine_type = "${var.machine_type}"
-  zone         = "europe-west3-a"
+  zone         = "${var.zone}"
   metadata_startup_script = "${lookup(var.startup_scripts, "nat")}"
   boot_disk {
     initialize_params {

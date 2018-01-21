@@ -1,5 +1,6 @@
 *json
-*.tfstate*
 vault files
 .terraform
 ssl_cert
+vault_auth_token
+terraform.tfvars

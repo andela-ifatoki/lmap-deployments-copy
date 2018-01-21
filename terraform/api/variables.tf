@@ -2,7 +2,7 @@ variable "project" {}
 
 variable "region" {}
 
-variable "vault_auth_token" {}
+variable "zone" {}
 
 variable "startup_scripts" {
   type = "map"

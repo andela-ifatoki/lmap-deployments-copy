@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = "${file("../andela-learning-da1e60624053.json")}"
+  credentials = "${file("../../gcp-account.json")}"
   project     = "${var.project}"
   region      = "${var.region}"
 }
