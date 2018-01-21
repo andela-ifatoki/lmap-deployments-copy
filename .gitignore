@@ -4,3 +4,4 @@ vault files
 ssl_cert
 vault_auth_token
 terraform.tfvars
+terraform_init_config

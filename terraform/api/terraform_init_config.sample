@@ -1,0 +1,6 @@
+project=""
+region=""
+bucket="lmap-tf-state"
+prefix ="terraform/state"
+path="terraform/state"
+credentials="../../gcp-account.json"
