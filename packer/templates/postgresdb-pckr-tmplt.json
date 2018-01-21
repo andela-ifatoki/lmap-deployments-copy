@@ -1,13 +1,14 @@
 {
   "variables": {
     "streamer_password": "{{env `STREAMER_PASSWORD`}}",
-    "db_password": "{{env `DB_PASSWORD`}}"
+    "db_password": "{{env `DB_PASSWORD`}}",
+    "project_id": "{{env `PROJECT_ID`}}"
   },
   "builders": [
     {
       "type": "googlecompute",
       "account_file": "../gcp-account.json",
-      "project_id": "andela-learning",
+      "project_id": "{{ user `project_id` }}",
       "source_image": "ubuntu-1604-xenial-v20180109",
       "zone": "europe-west2-b",
       "ssh_username": "packer",
