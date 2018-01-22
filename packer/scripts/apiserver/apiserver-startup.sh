@@ -46,7 +46,7 @@ pip install -r requirements.txt
 set_env_vars(){
 postgresdb_username=$(vault read -format="json" lmap/postgresdb | jq -r .data.lmap_db_username)
 postgresdb_password=$(vault read -format="json" lmap/postgresdb | jq -r .data.lmap_db_password)
-export SQLALCHEMY_DATABASE_URI=postgresql://${postgresdb_username}:${postgresdb_password}@10.0.0.5:5432/postgres
+export SQLALCHEMY_DATABASE_URI=postgresql://${postgresdb_username}:${postgresdb_password}@10.0.0.6:5432/postgres
 curl http://metadata.google.internal/computeMetadata/v1/project/attributes/learning_map_env -H "Metadata-Flavor: Google" > .env
 export $(cat .env)
 pub_key_token_verifier=$(vault read -format="json" lmap/keys | jq -r .data.lmap_token_verifier_pub_key)
