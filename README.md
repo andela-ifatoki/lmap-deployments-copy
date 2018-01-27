@@ -21,7 +21,6 @@ The code in this repository aim to bring these benefits to the Learning Map API 
 
 ### Content
 
-- [Infrastructure setup and app deployment](docs/infrastructure.md)
 - [Image Creation](docs/machine_image.md)
 - [Secret Management](docs/secret_management.md)
 - [Release management](docs/release.md)
