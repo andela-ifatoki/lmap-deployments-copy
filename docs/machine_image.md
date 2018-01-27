@@ -15,19 +15,19 @@ The instructions below already assume that
 Create a key for the service account, and place it at the root of the repository. Rename the file to gcp-account.json.
 
 ### Step 2
-Change directory to the packer/templates directory.
+Change directory to the packer/templates directory.  
 `cd packer/templates`
 
 ### Step 3
 Provide the value for the following environmental variables:
 
-`PROJECT_ID`: The Project ID on GCP to which the generated environment key belongs.
+`PROJECT_ID`: The Project ID on GCP to which the generated environment key belongs.  
 `export PROJECT_ID=<your-project-id>`
 
-`DB_PASSWORD`: The password of the user the main database will be accessed through.
+`DB_PASSWORD`: The password of the user the main database will be accessed through.  
 `export DB_PASSWORD=<password>`
 
-`STREAMER_PASSWORD`: The password of the user Barman will use to backup the main database
+`STREAMER_PASSWORD`: The password of the user Barman will use to backup the main database  
 `export STREAMER_PASSWORD=<password>`
 
 ### Step 4
