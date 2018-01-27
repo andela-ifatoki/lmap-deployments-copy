@@ -20,10 +20,13 @@ Change directory to the packer/templates directory.
 
 ### Step 3
 Provide the value for the following environmental variables:
+
 `PROJECT_ID`: The Project ID on GCP to which the generated environment key belongs.
 `export PROJECT_ID=<your-project-id>`
+
 `DB_PASSWORD`: The password of the user the main database will be accessed through.
 `export DB_PASSWORD=<password>`
+
 `STREAMER_PASSWORD`: The password of the user Barman will use to backup the main database
 `export STREAMER_PASSWORD=<password>`
 
