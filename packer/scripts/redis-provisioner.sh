@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 # This script installs and runs Redis on an Ubuntu-xenial linux machine.
 
 install_redis(){
@@ -26,3 +26,4 @@ main(){
 }
 
 main
+

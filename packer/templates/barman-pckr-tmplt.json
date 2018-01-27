@@ -1,0 +1,28 @@
+{
+  "variables": {
+    "streamer_password": "{{env `STREAMER_PASSWORD`}}",
+    "project_id": "{{env `PROJECT_ID`}}"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "../gcp-account.json",
+      "project_id": "{{ user `project_id` }}",
+      "source_image": "ubuntu-1604-xenial-v20180109",
+      "zone": "europe-west2-b",
+      "ssh_username": "packer",
+      "image_name": "lmap-barman-base-image"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "../scripts/barman/",
+      "destination": "/tmp"
+    },
+    {
+      "type": "shell",
+      "inline": ["/bin/bash /tmp/barman-provisioner.sh {{ user `streamer_password` }}"]
+    }
+  ]
+}

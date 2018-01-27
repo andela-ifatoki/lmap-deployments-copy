@@ -1,0 +1,27 @@
+{
+  "variables": {
+    "project_id": "{{env `PROJECT_ID`}}"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "../gcp-account.json",
+      "project_id": "{{ user `project_id` }}",
+      "source_image": "ubuntu-1604-xenial-v20180109",
+      "zone": "europe-west2-b",
+      "ssh_username": "packer",
+      "image_name": "lmap-api-base-image"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "../scripts/apiserver/apiserver-provisioner.sh"
+    },
+    {
+      "type": "file",
+      "source": "../scripts/apiserver/apiserver-startup.sh",
+      "destination": "/home/packer/apiserver-startup.sh"
+    }
+  ]
+}
