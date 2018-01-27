@@ -16,7 +16,7 @@ Infrastructure as code is an approach to infrastructure automation based on prac
 
 Infrastructure as code helps standardize and automate the creation/orchestration of networks, provisioning of server systems, securing and deployment of  applications in a repeatable stateless manner.
 
-The code in this repository aim to bring these benefits to the Learning Map API application. With a single command one, can spin up an entire secure network with the application deployed on a cluster of app servers behind a load balancer and highly performant database.
+The code in this repository aim to bring these benefits to the Learning Map API application(hence forth referred to as LMap). With a single command one, can spin up an entire secure network with the application deployed on a cluster of app servers behind a load balancer and highly performant database.
 
 
 ### Content
