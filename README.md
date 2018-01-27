@@ -12,7 +12,7 @@
 ### Introduction
 
 > **What is Infrastructure as Code(IaC):**
-Infrastructure as code is an approach to infrastructure automation based on practices from software development. It emphasises consistent repeatable routines for provisioning and chaining systems and their configuration. Changes are made to definitions and then rolled out to systems through unattended processes that include thorough validation.
+Infrastructure as code is an approach to infrastructure automation based on practices from software development. It emphasises consistent repeatable routines for provisioning and changing systems and their configuration. Changes are made to definitions and then rolled out to systems through unattended processes that include thorough validation.
 
 Infrastructure as code helps standardize and automate the creation/orchestration of networks, provisioning of server systems, securing and deployment of  applications in a repeatable stateless manner.
 
