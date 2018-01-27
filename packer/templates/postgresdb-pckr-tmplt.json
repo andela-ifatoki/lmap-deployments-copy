@@ -1,9 +1,14 @@
 {
+  "variables": {
+    "streamer_password": "{{env `STREAMER_PASSWORD`}}",
+    "db_password": "{{env `DB_PASSWORD`}}",
+    "project_id": "{{env `PROJECT_ID`}}"
+  },
   "builders": [
     {
       "type": "googlecompute",
       "account_file": "../gcp-account.json",
-      "project_id": "andela-learning",
+      "project_id": "{{ user `project_id` }}",
       "source_image": "ubuntu-1604-xenial-v20180109",
       "zone": "europe-west2-b",
       "ssh_username": "packer",
@@ -13,12 +18,14 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "../scripts/pg/pg_hba.conf",
-      "destination": "/tmp/pg_hba.conf"
+      "source": "../scripts/pg/",
+      "destination": "/tmp"
     },
     {
       "type": "shell",
-      "script": "../scripts/pg/postgresdb-provisioner.sh"
+      "inline": [
+        "/bin/bash /tmp/postgresdb-provisioner.sh {{ user `db_password` }} {{ user `streamer_password` }}"
+      ]
     }
   ]
 }

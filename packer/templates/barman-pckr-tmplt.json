@@ -1,5 +1,6 @@
 {
   "variables": {
+    "streamer_password": "{{env `STREAMER_PASSWORD`}}",
     "project_id": "{{env `PROJECT_ID`}}"
   },
   "builders": [
@@ -10,18 +11,18 @@
       "source_image": "ubuntu-1604-xenial-v20180109",
       "zone": "europe-west2-b",
       "ssh_username": "packer",
-      "image_name": "lmap-natgw-base-image"
+      "image_name": "lmap-barman-base-image"
     }
   ],
   "provisioners": [
     {
       "type": "file",
-      "source": "../scripts/nat/sysctl.conf",
-      "destination": "/tmp/sysctl.conf"
+      "source": "../scripts/barman/",
+      "destination": "/tmp"
     },
     {
       "type": "shell",
-      "script": "../scripts/nat/natgw-provisioner.sh"
+      "inline": ["/bin/bash /tmp/barman-provisioner.sh {{ user `streamer_password` }}"]
     }
   ]
 }
