@@ -1,13 +1,4 @@
-# Learning Map API Infrastructure
-
-
-### Tech stack
-- [Barman](http://www.pgbarman.org/)
-- [Terraform](https://www.terraform.io)
-- [Packer](https://www.packer.io)
-- [Hashicorp Vault](https://www.vaultproject.io)
-- Google Cloud Platform
-
+# Collective Andela Learning Map Infrastructure
 
 ### Introduction
 
@@ -16,7 +7,17 @@ Infrastructure as code is an approach to infrastructure automation based on prac
 
 Infrastructure as code helps standardize and automate the creation/orchestration of networks, provisioning of server systems, securing and deployment of  applications in a repeatable stateless manner.
 
-The code in this repository aim to bring these benefits to the Learning Map API application(hence forth referred to as LMap). With a single command one, can spin up an entire secure network with the application deployed on a cluster of app servers behind a load balancer and highly performant database.
+The code in this repository aim to bring these benefits to the Collective Andela Learning Map application(hence forth referred to as CALM). With a single command one, can spin up an entire secure network with the application deployed on a cluster of app servers behind a load balancer and highly performant database.
+
+## API
+
+### Tech stack
+
+-   [Barman](http://www.pgbarman.org/)
+-   [Terraform](https://www.terraform.io)
+-   [Packer](https://www.packer.io)
+-   [Hashicorp Vault](https://www.vaultproject.io)
+-   [Google Cloud Platform](https://cloud.google.com)
 
 
 ### Content
@@ -31,3 +32,15 @@ The code in this repository aim to bring these benefits to the Learning Map API 
 
 - [Badriku Eugene Noel](https://github.com/EugeneBad)
 - [Itunuloluwa Fatoki](https://github.com/itunuworks)
+
+## Frontend
+
+### Technologies
+
+- [Terraform](https://terraform.io)
+- [Packer](https://packer.io)
+- [Google Cloud Platform](https://cloud.google.com)
+
+### Contributor
+
+- [Baasbank Akinmuleya](https://github.com/baasbank)
