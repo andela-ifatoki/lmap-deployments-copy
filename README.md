@@ -22,9 +22,9 @@ The code in this repository aim to bring these benefits to the Learning Map API 
 ### Content
 
 - [Image Creation](docs/machine_image.md)
+- [SSH access](docs/ssh.md)
 - [Secret Management](docs/secret_management.md)
 - [Release management](docs/release.md)
-- [SSH access](docs/ssh.md)
 - [Maintenance](docs/maintenance.md)
 
 ### Contributors
