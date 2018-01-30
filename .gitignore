@@ -7,3 +7,4 @@ terraform.tfvars
 terraform_init_config
 terraform.tfstate.backup
 gcp-account.json
+.DS_Store

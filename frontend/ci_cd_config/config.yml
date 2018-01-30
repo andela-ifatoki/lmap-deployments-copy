@@ -23,7 +23,7 @@ jobs:
           command: sudo yarn coverage
 
       - run:
-          name: pass coverage
+          name: report coverage
           command: sudo yarn coveralls
   
   deploy:
