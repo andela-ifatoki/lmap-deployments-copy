@@ -25,7 +25,7 @@ The code in this repository aim to bring these benefits to the Learning Map API 
 - [SSH access](docs/ssh.md)
 - [Secret Management](docs/secret_management.md)
 - [Release management](docs/release.md)
-- [Maintenance](docs/maintenance.md)
+- [Maintenance and Backup](docs/maintenance.md)
 
 ### Contributors
 
