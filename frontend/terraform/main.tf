@@ -62,7 +62,7 @@ module "gce_lb_http" {
 }
 
 backend_params = [
-	"/,http,3000,15"
+	"/healthcheck,http,3000,15"
 ]
 	private_key = "${file("path_to_.key_file")}"
 	certificate = "${file("path_to_.crt_file")}"
