@@ -25,6 +25,11 @@
       "destination": "/home/packer/vault_config_file.hcl"
     },
     {
+      "type": "file",
+      "source": "../scripts/vault/refresh_vault_auth_token.sh",
+      "destination": "/home/packer/refresh_vault_auth_token.sh"
+    },
+    {
       "type": "shell",
       "script": "../scripts/vault/vault-provisioner.sh"
     }

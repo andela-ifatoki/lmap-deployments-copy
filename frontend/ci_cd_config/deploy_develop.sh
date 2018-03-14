@@ -34,7 +34,7 @@ set_up_gcloud_project() {
 deploy_change() {
   commit_hash=${CIRCLE_SHA1}
   gcloud compute project-info add-metadata --metadata commit_hash=${commit_hash}
-  gcloud beta compute instance-groups managed rolling-action replace  instance-group-lmap-frontend
+  gcloud beta compute instance-groups managed rolling-action replace instance-group-lmap-frontend
  --max-surge=$MAX_SURGE --max-unavailable=0 --min-ready=200 --region=europe-west3
 }
 
