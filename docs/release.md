@@ -35,6 +35,6 @@ Pipeline Steps
 
 To ensure the application has zero downtime during deployment, a **Rolling Replace** will be used. This is a technique that reduces downtime and risk by spinning up a new environment along side the pre-existing one that pulls and deploys the new changes. As it starts up, no traffic to the application is routed to it but rather to the pre-existing environment. After a set *cool down* period to allow the new environment to reach desired operation, traffic is then routed to the  new environment and the old one is decommissioned and deleted.
 
-To enable easy rollbacks, A build revert will have to be carried out. Successful builds are given a commit, so the previous succesful run build will be re-run and the deployment process of the previous version will be triggered.
+To enable easy rollbacks, A build revert will have to be carried out. Successful builds are given a commit, so the previous successful run build will be re-run and the deployment process of the previous version will be triggered.
 
 Semantic Versioning which implements automated release version bumping though not initially being used by LMap on Heroku is to be an added feature. This will ensure proper tracking of releases.
