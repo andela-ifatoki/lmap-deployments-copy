@@ -43,11 +43,15 @@ This refers to the capabilities that a particular user setup on Vault will have 
 The policy that LMap API instances use is hard baked in the Vault server's base image in `/home/packer/lmap-vault-policy.hcl`
 ```
 path "lmap/keys" {
-capabilities = ["read"]
+  capabilities = ["read"]
 }
 
 path "lmap/postgresdb" {
-capabilities = ["read"]
+  capabilities = ["read"]
+}
+
+path "lmap/email" {
+  capabilities = ["read"]
 }
 
 path "auth/token/lookup-self" {
@@ -62,19 +66,28 @@ Run `vault policy-write lmap-policy /home/packer/lmap-vault-policy.hcl` to creat
 
 ### CLI
 #### Mounting a secret backend
-`vault mount kv -path=lmap`  
+`vault mount -path=lmap kv `  
 This mounts a `key-value` type filesystem at the path `lmap/` which will act as the root for writing the LMap secrets.
 LMap has 4 secrets stored in vault:
 - *lmap_db_username*: Username the LMap application uses to access the main database.
 - *lmap_db_password*: Password associated with above username.
 - *lmap_token_verifier_pub_key*: Used by the CALM API to verify received tokens.
 - *lmap_repo_private_key*: Private key that allows cloning of latest commit from source control on github.
+- *mail_username*: Email for sending mail notifications.
+- *mail_password*: Password associated with `mail_username`.
 #### Write to secret backend
-`vault write lmap/postgresdb lmap_db_username=<main_postgresdb_username> lmap_db_password=<main_postgresdb_password>`  
-*lmap_token_verifier_pub_key* and *lmap_repo_private_key* are files and can be written into vault directly using:  
-`vault write lmap/keys lmap_token_verifier_pub_key=@public_key.file lmap_repo_private_key=@private_key.file`
+* `vault write lmap/postgresdb lmap_db_username=<main_postgresdb_username> lmap_db_password=<main_postgresdb_password>`  
+*lmap_token_verifier_pub_key* and *lmap_repo_private_key* are files and can be written into vault directly using: 
+
+* `vault write lmap/keys lmap_token_verifier_pub_key=@public_key.file lmap_repo_private_key=@private_key.file`
+
+* `vault write lmap/email mail_username=@email.file mail_password=@password.file`
 #### Read secret backend
-`vault read lmap/postgresdb`
+* `vault read lmap/postgresdb`
+
+* `vault read lmap/keys`
+
+* `vault read lmap/email`
 
 ### HTTP API
 
